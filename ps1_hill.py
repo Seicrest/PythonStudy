@@ -50,10 +50,10 @@ def isAlphabetic(str):
 def words(data):
     alphabetic=[]       #alphabetaic words lower case
     non_alphabetic=[]   #non alphabetaic words
-    words=data.split(' ')
+    words=data.split()
     for word in words:
            if len(word)>0:
-               if isAlphabetic(word):
+               if word.isalpha():
                    alphabetic.append(word.lower())
                else:
                    non_alphabetic.append(word)
