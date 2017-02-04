@@ -131,7 +131,14 @@ namespace DistributeSystem
             mean = null;
             if (!string.IsNullOrEmpty(str))
             {
-                return Characters[str[0] - 'A'] && NextChars[str[0] - 'A'] != null && NextChars[str[0] - 'A'].Exist(str.Substring(1),out mean);
+                if (str[0] < 'A' || str[0] > 'Z')
+                {
+                    return false;
+                }
+                else
+                {
+                    return Characters[str[0] - 'A'] && NextChars[str[0] - 'A'] != null && NextChars[str[0] - 'A'].Exist(str.Substring(1), out mean);
+                }
             }
             else
             {
@@ -146,7 +153,11 @@ namespace DistributeSystem
         {
             if (!string.IsNullOrEmpty(word))
             {
-                if(Characters[word[0] - 'A'] && NextChars[word[0] - 'A'] != null)
+                if (word[0] < 'A' || word[0]>'Z')
+                {
+                    return null;
+                }
+                else if(Characters[word[0] - 'A'] && NextChars[word[0] - 'A'] != null)
                 {
                     return NextChars[word[0] - 'A'].FindWord(word.Substring(1));
                 }
